@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+		var latte_lib = require("latte_lib");
 		var merge = function(data, inData) {
 			if(inData) {
 				return data;
@@ -8,10 +9,9 @@
 		var Path = require("path");
 		var doCommand = function(command) {
 			var lade = require("../lib/index.js");
-			var latte_lib = require("latte_lib");
+			
 			var Fs = latte_lib.fs;
 			var data = lade.load(command.inConfig);
-			
 			var object = lade.toObject(data);
 			
 			var result = lade.parse(object);
@@ -52,12 +52,47 @@
 			return null;
 		}
 		
-		var startTime = Date.now();
-		doCommand(buildConfig)
-		console.log(Date.now() - startTime + "ms");
+		
+		//doCommand(buildConfig)
+		
 		return buildConfig;
 	};
-module.exports = function(commands) {
+module.exports = function(command) {
 	var config = GetConfig();
-	var commands ;
+	var commands;
+	commands = command?  config[(command|| "build")]  : config["build"];
+	if(!commands) {
+		return console.log("config file error");
+	}
+	var result = [];
+	commands.forEach(function(o) {
+		if(latte_lib.isString(o)) {
+			result = result.concat(config.commands[o]);
+		}else{
+			result.push(o);
+		}		
+	});
+	var funcs = result.map(function(command) {
+		return  function(callback) {
+			switch(command.type) {
+				case "build":
+					doCommand(command);
+					callback();
+				break;
+				default:
+					callback("command.type is "+command.type);
+				break;
+			}
+		} 
+	});
+	var startTime = Date.now();
+	latte_lib.async.series(funcs, function(err ) {
+		if(err) {
+			return console.log(err);
+		}
+		console.log(Date.now() - startTime + "ms");
+	});
+
+
+
 }
