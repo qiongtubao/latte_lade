@@ -1,18 +1,18 @@
 {
 	"name": "latte_lade",
-	"version": "0.0.1",
-	"description": "latte_web_lade",
-	"keywords": ["latte_web_lade"],
+	"version": "0.0.3",
+	"description": "latte_lade",
+	"keywords": ["latte_lade"],
 	"author": "qiongtubao",
 	"main": "lib/index.js",
 	"repository": {
 		"type": "git",
-		"url":"https://github.com/qiongtubao/latte_web_lade.git"
+		"url":"https://github.com/qiongtubao/latte_lade.git"
 	}	,
 	"bin": {
 		"lade": "./bin/lade"
 	},
 	"dependencies": {
-		"pug": "*"
+		"latte_lib":"*"	
 	}
 }
