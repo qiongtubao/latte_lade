@@ -1,6 +1,6 @@
 {
 	"name": "latte_lade",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "latte_lade",
 	"keywords": ["latte_lade"],
 	"author": "qiongtubao",
@@ -9,9 +9,6 @@
 		"type": "git",
 		"url":"https://github.com/qiongtubao/latte_lade.git"
 	}	,
-	"bin": {
-		"lade": "./bin/lade"
-	},
 	"dependencies": {
 		"latte_lib":"*"	
 	}
