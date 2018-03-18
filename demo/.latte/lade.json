@@ -1,5 +1,0 @@
-{
-	"inConfig": "./lade.latte",
-	"outData": "./lade.json",
-	"outHtml": "./lade.html"
-}

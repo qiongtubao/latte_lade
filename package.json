@@ -1,10 +1,10 @@
 {
 	"name": "latte_lade",
-	"version": "0.0.3",
+	"version": "0.1.0",
 	"description": "latte_lade",
 	"keywords": ["latte_lade"],
 	"author": "qiongtubao",
-	"main": "lib/index.js",
+	"main": "index.js",
 	"repository": {
 		"type": "git",
 		"url":"https://github.com/qiongtubao/latte_lade.git"
